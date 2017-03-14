@@ -1,6 +1,6 @@
 ''' get sms from a cat '''
 from flask import Flask, request
-from twilio import TwilioRestClient
+from twilio.rest import TwilioRestClient
 import settings
 
 app = Flask(__name__)
