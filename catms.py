@@ -10,7 +10,7 @@ auth_token = settings.TWILIO_TOKEN
 number = settings.TWILIO_NUMBER
 client = TwilioRestClient(account_sid, auth_token)
 
-@app.route('/', method='POST')
+@app.route('/', methods=['POST'])
 def receive_sms():
     ''' accept sms via twilio '''
     sender = request.form['From']
