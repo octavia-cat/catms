@@ -1,5 +1,6 @@
 ''' get sms from a cat '''
 from flask import Flask, request
+import random
 from twilio.rest import TwilioRestClient
 import settings
 
@@ -15,7 +16,9 @@ client = TwilioRestClient(account_sid, auth_token)
 def receive_sms():
     ''' accept sms via twilio '''
     sender = request.form['From']
-    client.message.create(body=meow(), to=sender, from_=number)
+    body = meow()
+    client.messages.create(body=body, to=sender, from_=number)
+    return body
 
 
 @app.route(base_url, methods=['GET'])
@@ -26,7 +29,10 @@ def web_responder():
 
 def meow():
     ''' the cat's response '''
-    return 'mrrrow'
+    return 'm' * random.randint(1, 4) + \
+           'r' * random.randint(2, 8) + \
+           'o' * random.randint(1, 9) + \
+           'w'
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=3333)
