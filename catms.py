@@ -4,20 +4,21 @@ from twilio.rest import TwilioRestClient
 import settings
 
 app = Flask(__name__)
+base_url = settings.BASE_URL
 
 account_sid = settings.TWILIO_SID
 auth_token = settings.TWILIO_TOKEN
 number = settings.TWILIO_NUMBER
 client = TwilioRestClient(account_sid, auth_token)
 
-@app.route('/', methods=['POST'])
+@app.route(base_url, methods=['POST'])
 def receive_sms():
     ''' accept sms via twilio '''
     sender = request.form['From']
     client.message.create(body=meow(), to=sender, from_=number)
 
 
-@app.route('/', methods=['GET'])
+@app.route(base_url, methods=['GET'])
 def web_responder():
     ''' display a response at the http endpoint in browser '''
     return meow()
