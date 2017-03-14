@@ -17,7 +17,7 @@ client = TwilioRestClient(account_sid, auth_token)
 def receive_sms():
     ''' accept sms via twilio '''
     sender = request.form['From']
-    body = meow()
+    body = meow(request.form['Body'])
     client.messages.create(body=body, to=sender, from_=number)
     return body
 
@@ -34,7 +34,7 @@ def meow(message=u''):
     responses = {
         r'.*\bselfie\b.*': u'\U0001F431',
         r'.*are you a [cat|kitty|kitling|kitten].*': u'\U0001F431' * 3,
-        u'.*I (love|\u2764) you.*': u'{meow} \u2764'
+        r'.*I (love|\u2764) you.*': u'{meow} \u2764'
     }
 
     reply = '{meow}'
