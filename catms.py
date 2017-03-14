@@ -1,7 +1,7 @@
 ''' get sms from a cat '''
 from flask import Flask, request
 import re
-from random import choice, randint
+from random import choice, randint, sample
 from twilio.rest import TwilioRestClient
 import settings
 
@@ -47,6 +47,7 @@ def meow(message=u''):
 
     meows = [
         'm' * randint(1, 2) + 'r' * randint(2, 8) + 'o' * randint(1, 10) + 'w',
+        'a' * randint(3, 9) + 'e' * randint(2, 6),
         'merp' + ' erp' * randint(0, 3),
         'e' * randint(3, 5) + 'a' * randint(1, 5) + 'wwr' + 'a' * randint(2, 5),
         'm' + 'e' * randint(2, 7) + 'p',
@@ -54,10 +55,28 @@ def meow(message=u''):
         'm' + 'r' * randint(5, 10),
         'a' * randint(1, 3) + 'ww' + 'r' * randint(3, 5) + 'a' * randint(2, 10),
         'm' + 'rm' * randint(3, 6),
-        'snxr' + 'x' * randint(1, 4),
+        'h' + 'r' * randint(1, 7) + 'mmram',
+        'snxr' + 'x' * randint(1, 3),
+    ] * 4 + [
+        u'\U0001F431',
+        u'\U0001F640',
+        u'\U0001F638',
+    ] * 3 + [
+        u'\u2049',
+        u'\u203C',
+    ] * 2 + [
+        u'\u260E',
+        u'\U0001F331',
+        u'\U0001F41F',
+        u'\U0001F480',
+        u'\U0001F4A3',
+        u'\U0001F4A4',
+        u'\U0001F4B0',
+        u'\U0001F408',
     ]
 
-    reply = re.sub(r'{meow}', choice(meows), reply)
+    meow_reply = ' '.join(sample(meows, choice([1, 2, 2, 3, 4])))
+    reply = re.sub(r'{meow}', meow_reply, reply)
 
     return reply
 
