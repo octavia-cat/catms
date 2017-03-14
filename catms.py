@@ -17,6 +17,12 @@ def receive_sms():
     client.message.create(body=meow(), to=sender, from_=number)
 
 
+@app.route('/', methods=['GET'])
+def web_responder():
+    ''' display a response at the http endpoint in browser '''
+    return meow()
+
+
 def meow():
     ''' the cat's response '''
     return 'mrrrow'
