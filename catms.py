@@ -57,28 +57,30 @@ def meow(message=u''):
         'm' + 'rm' * randint(3, 6),
         'h' + 'r' * randint(1, 7) + 'mmram',
         'snxr' + 'x' * randint(1, 3),
-    ] * 4 + [ # cat faces
-        u'\U0001F431',
-        u'\U0001F640',
-        u'\U0001F638',
+    ] * 5 + [ # cat faces
+        u'\U0001F431', # cat face
+        u'\U0001F640', # shocked
+        u'\U0001F638', # smiling
+        u'\U0001F63B', # heart eyes
     ] * 3 + [ # !! and ??
         u'\u2049',
         u'\u203C',
     ] * 2 + [ # misc emoji
-        u'\u260E',
-        u'\U0001F331',
-        u'\U0001F41F',
-        u'\U0001F480',
-        u'\U0001F4A3',
-        u'\U0001F4A4',
-        u'\U0001F4B0',
-        u'\U0001F408',
-        u'\U0001F4DA',
-        u'\U0001F4CE',
-        u'\U0001F4AB',
+        u'\u260E', # phone
+        u'\U0001F331', # sprout
+        u'\U0001F41F', # fish
+        u'\U0001F480', # skull
+        u'\U0001F4A3', # bomb
+        u'\U0001F4A4', # zzz
+        u'\U0001F4B0', # moneybag
+        u'\U0001F4DA', # books
+        u'\U0001F4AB', # dizzy
+        u'\U0001F31F', # glowing star
+        u'\U0001F353', # strawberry
+        u'\U0001F357', # poultry leg
     ]
 
-    meow_reply = ' '.join(sample(meows, choice([1, 2, 2, 3, 4])))
+    meow_reply = ' '.join(sample(meows, choice([1, 2, 2, 3, 3, 3, 4])))
     reply = re.sub(r'{meow}', meow_reply, reply)
 
     return reply
