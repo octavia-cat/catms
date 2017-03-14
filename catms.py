@@ -57,14 +57,14 @@ def meow(message=u''):
         'm' + 'rm' * randint(3, 6),
         'h' + 'r' * randint(1, 7) + 'mmram',
         'snxr' + 'x' * randint(1, 3),
-    ] * 4 + [
+    ] * 4 + [ # cat faces
         u'\U0001F431',
         u'\U0001F640',
         u'\U0001F638',
-    ] * 3 + [
+    ] * 3 + [ # !! and ??
         u'\u2049',
         u'\u203C',
-    ] * 2 + [
+    ] * 2 + [ # misc emoji
         u'\u260E',
         u'\U0001F331',
         u'\U0001F41F',
@@ -73,6 +73,9 @@ def meow(message=u''):
         u'\U0001F4A4',
         u'\U0001F4B0',
         u'\U0001F408',
+        u'\U0001F4DA',
+        u'\U0001F4CE',
+        u'\U0001F4AB',
     ]
 
     meow_reply = ' '.join(sample(meows, choice([1, 2, 2, 3, 4])))
